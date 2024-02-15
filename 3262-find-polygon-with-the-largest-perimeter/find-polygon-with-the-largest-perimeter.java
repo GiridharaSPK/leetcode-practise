@@ -1,6 +1,17 @@
 class Solution {
     public long largestPerimeter(int[] nums) {
         Arrays.sort(nums);
+        long sum = 0;
+        long ans = -1;
+
+        for(int i : nums){
+            if(sum > i)
+                ans = sum + i;
+            sum += i;
+        }
+        return ans;
+        /*
+        // using prefix sum
         long[] ps = new long[nums.length];
         ps[0] = 0;
         for(int i = 1; i < nums.length; i++){
@@ -12,6 +23,7 @@ class Solution {
         }
         if(j < 2) return -1;
         return ps[j] + nums[j];
+        */
     }
 
 }
