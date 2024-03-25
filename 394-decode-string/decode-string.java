@@ -1,6 +1,36 @@
 class Solution {
     public String decodeString(String input) {
-        int pointer = 0;
+        
+        int index = 0;
+        int count = 0;
+        String ans = "";
+        Stack<String> strings = new Stack();
+        Stack<Integer> counts = new Stack();
+
+        while(index < input.length()){
+            if(Character.isDigit(input.charAt(index))) {
+                count = count*10 + (Character.getNumericValue(input.charAt(index)));
+            }else if(input.charAt(index) == '['){
+                counts.push(count);
+                count = 0;
+                strings.push(ans);
+                ans = "";
+            }else if(input.charAt(index) == ']'){
+                int currentCount = counts.pop();
+                StringBuilder sb = new StringBuilder();
+                sb.append(strings.pop());
+                for(int i = 0; i < currentCount; i++){
+                    sb.append(ans);
+                }
+                ans = sb.toString();
+            }else{
+                ans = ans + input.charAt(index);
+            }
+            index++;
+        }
+         return ans;
+        
+        /*int pointer = 0;
         int count = 0;
         String ans = "";
         String temp = "";
@@ -37,7 +67,7 @@ class Solution {
         while(!s.isEmpty()){
             ans =s.pop() + ans;
         }
-        return ans;
+        return ans;*/
     }
 }
 
