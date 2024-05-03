@@ -1,0 +1,5 @@
+- * no mention of what is outside the matrix
+- * Precomputation - remove the outward 0s - which touch the border - with dfs - because there is no use of all those 0s
+- then count number of times dfs is called
+- use same dfs (update 0 to 1) and dfs again - for precomputation and counter
+- use the 1s to mark visited 0s instead of a visited 2D - array
