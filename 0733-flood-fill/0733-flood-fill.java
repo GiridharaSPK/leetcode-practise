@@ -1,4 +1,15 @@
+class Point{
+    int x;
+    int y;
+    
+    Point(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+}
+
 class Solution {
+    
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
         int fc = image[sr][sc]; //first color
         int m = image.length;
@@ -7,8 +18,28 @@ class Solution {
         // * if the initial color is same as given color no need to dfs
         if(fc == color) return image; 
         
-        dfs(image, sr, sc, m, n, color, fc);
+        Queue<Point> q = new LinkedList<Point>();
+        q.add(new Point(sr, sc));
+        bfs(image, m, n, q, color, fc);
+        
+        // dfs(image, sr, sc, m, n, color, fc);
         return image;
+    }
+    
+    private void bfs(int[][] image, int m, int n, Queue<Point> q, int color, int fc){
+        while(!q.isEmpty()){
+            Point p = q.remove();
+            if(image[p.x][p.y] == fc){
+                image[p.x][p.y] = color;
+                int[][] dir = {{-1,0},{0,1},{0,-1},{1,0}};
+
+                for(int k = 0; k < 4;k++){
+                    int nr = p.x + dir[k][0];
+                    int nc = p.y + dir[k][1];
+                    if(isSafe(nr, nc, m, n)) q.add(new Point(nr, nc));
+                }
+            }
+        }
     }
     
     private boolean isSafe(int r, int c, int m, int n){
