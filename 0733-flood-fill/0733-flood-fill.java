@@ -29,15 +29,16 @@ class Solution {
     private void bfs(int[][] image, int m, int n, Queue<Point> q, int color, int fc){
         while(!q.isEmpty()){
             Point p = q.remove();
-            if(image[p.x][p.y] == fc){
-                image[p.x][p.y] = color;
-                int[][] dir = {{-1,0},{0,1},{0,-1},{1,0}};
+            if(image[p.x][p.y] != fc) continue;
+            
+            image[p.x][p.y] = color;
+            int[][] dir = {{-1,0},{0,1},{0,-1},{1,0}};
 
-                for(int k = 0; k < 4;k++){
-                    int nr = p.x + dir[k][0];
-                    int nc = p.y + dir[k][1];
-                    if(isSafe(nr, nc, m, n)) q.add(new Point(nr, nc));
-                }
+            for(int k = 0; k < 4;k++){
+                int nr = p.x + dir[k][0];
+                int nc = p.y + dir[k][1];
+                if(isSafe(nr, nc, m, n)) 
+                    q.add(new Point(nr, nc));
             }
         }
     }
