@@ -4,7 +4,8 @@ class Solution {
         int m = image.length;
         int n = image[0].length;
         
-        if(fc == color) return image;
+        // * if the initial color is same as given color no need to dfs
+        if(fc == color) return image; 
         
         dfs(image, sr, sc, m, n, color, fc);
         return image;
@@ -15,7 +16,8 @@ class Solution {
     }
     
     private void dfs(int[][] image, int r, int c, int m, int n, int color, int fc){
-        if(image[r][c] != fc) return; // adding extra check if  '== color' (|| image[r][c] == color)
+        if(image[r][c] != fc) return;
+        // can also add extra check if  '== color' (|| image[r][c] == color) - but appears redundant
         
         image[r][c] = color;
         int[][] dir = {{-1,0}, {0, 1}, {1, 0}, {0, -1}};
