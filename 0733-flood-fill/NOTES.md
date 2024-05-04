@@ -1,1 +1,2 @@
-​
+- * can initial color be same as given color? - directly return image
+- try using dir 2d matrix
