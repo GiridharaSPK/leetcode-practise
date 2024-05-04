@@ -17,13 +17,15 @@ class Solution {
         
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
-                dfs(board, m, n, i, j, 'O', 'X');
+                if(board[i][j] == 'O') board[i][j] = 'X';
+                // dfs(board, m, n, i, j, 'O', 'X');
             }
         }
         
         for(int i = 0; i < m;i++){
             for(int j = 0; j < n; j++){
-                dfs(board, m, n, i, j, 'V', 'O');
+                if(board[i][j] == 'V') board[i][j] = 'O';
+                // dfs(board, m, n, i, j, 'V', 'O');
             }
         }
     }
