@@ -10,14 +10,34 @@ class Solution {
             ).add(prerequisites[i][1]);
         }
         
-        for(int i = 0; i < numCourses; i++){       
-            boolean check = dfs(graph, i, visited, done);
+        for(int i = 0; i < numCourses; i++){   
+            boolean check = dfs(graph, i, visited);
+            // boolean check = dfs(graph, i, visited, done);
             if(!check) return false;
         }
         return true;
     }
     
     private boolean dfs(HashMap<Integer, ArrayList<Integer>> graph, int i, 
+                        HashSet<Integer> visited){
+        if(visited.contains(i)){
+           return false; 
+        }
+        if(graph.get(i) == null){
+            return true;
+        }
+        visited.add(i);
+        ArrayList<Integer> adj = graph.get(i);
+        for(int j = 0; j < adj.size(); j++){
+            boolean check = dfs(graph, adj.get(j), visited);
+            if(!check) return false; 
+        }
+        visited.remove(i);
+        graph.put(i, null);
+        return true;
+    }
+    
+   /* private boolean dfs(HashMap<Integer, ArrayList<Integer>> graph, int i, 
                         HashSet<Integer> visited, HashSet<Integer> done){
         if(visited.contains(i)){
            return false; 
@@ -34,5 +54,5 @@ class Solution {
         }
         visited.remove(i);
         return true;
-    }
+    }*/
 }
