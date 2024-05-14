@@ -1,0 +1,12 @@
+- Dijkstras uses **BFS** (difficult to track traversed distance with DFS)
+- use min heap to retrive nearest node from a given node
+-
+- Time Complexity - **(V+E) log V **->
+​
+- convert to adj list : a -> (w, b), ...
+- add first element to heap - 0,k (0-distance of k to k, k node)
+- iterate over heap until heap gets emptied(not until visted count == n because to find shortest path, we need to traverse all nodes)
+- traverse using bfs - easy to estimate updated path distance
+- to traverse to next nodes, when getting adj lists, makesure there are adj nodes (add contains check for map.get(node))
+- when next nodes are added to heap, update the dist = dist + currentDist (to keep track of traversed distances)
+- edge case - check visited set size - if all the components of graph are not connected, the ans is **-1**
