@@ -19,6 +19,8 @@ class Solution {
         
         if(root == null && subRoot != null || root !=null && subRoot == null) return false;
         
+        // cant check by comparing if isSubTrees are same 
+        // when roots are equal subtrees also have to be equal
        /* if(root.val == subRoot.val){
             boolean subTreeTrue = (isSubtree(root.left, subRoot.left) 
                 && isSubtree(root.right, subRoot.right));
