@@ -1,1 +1,4 @@
-​
+- checking for both nulls and returning
+- checking if one of them is null and returning
+- the above covers all test cases
+- then no more checks
