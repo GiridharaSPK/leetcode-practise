@@ -10,6 +10,8 @@
 
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+       
+        // iterative approach
         while(root!=null){
             if(root.val < p.val && root.val < q.val){
                 root = root.right;
@@ -20,6 +22,8 @@ class Solution {
             }
         }
         return root;
+        
+        // recursive approach
         /*if(p == q) return p;
         if(root==null || root == p || root == q) return root;
         if(p.val < root.val && root.val < q.val 
