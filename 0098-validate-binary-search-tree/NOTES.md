@@ -1,9 +1,11 @@
+Notes:
 ​- Integer.MAX_VALUE = 2^31 - 1
 - Integer.MIN_VALUE = - 2^31
 - when using java max and java min values check the edge cases
     -- if there is a possibility of input matching with those - then make `int` to `long`
     -- passing Integer.MAX_VALUE + 1 to long value doesnt work (probably becuase it compiles first as int and pass)
     -- also check if there is a possiblity of occuring those in an extended question
+    -- dont make specific checks /cases for min_value or max_values (like - ignore if x == min_value)
 - always check input values range check for edge cases
 - when it is mentioned "must be less than root" check for equals case ( ===  and 2,2,2,..)
 - when you think 2 helper (recursive) functions are needed pass 2 params in helper instead
