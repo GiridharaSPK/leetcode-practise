@@ -15,11 +15,27 @@
  */
 class Solution {
     public int findSecondMinimumValue(TreeNode root) {
-        long[] min = new long[2];
+        
+        //approach using treeset
+        TreeSet<Integer> set = new TreeSet();
+        setHelper(root, set);
+        set.pollFirst();
+        if(!set.isEmpty()) return set.pollFirst();
+        return -1;
+        
+        // using comparision and array
+        /*long[] min = new long[2];
         min[0] = root.val;
         min[1] = Long.MAX_VALUE;
         helper(root, min);
-        return (min[1] == Long.MAX_VALUE) ? -1: (int) min[1];
+        return (min[1] == Long.MAX_VALUE) ? -1: (int) min[1];*/
+    }
+    
+    private void setHelper(TreeNode root, TreeSet<Integer> set){
+        if(root == null) return;
+        set.add(root.val);
+        setHelper(root.left, set);
+        setHelper(root.right, set);
     }
     
     private void helper(TreeNode root, long[] min){
