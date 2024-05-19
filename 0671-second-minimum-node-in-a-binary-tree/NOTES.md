@@ -1,1 +1,2 @@
-​
+- dont over do left and right nodes logic in the current iteration
+- also take care of extreme cases Integer.MAX_VALUE by declaring the temp values as long​ (incase using)
