@@ -24,17 +24,19 @@ class Solution {
         // run bfs as is 
         // maintain a size variable to monitor end of level
         // whenever size == 0 (last node of the level), just add to list
+        int size = q.size();
         while(!q.isEmpty()){
-            int size = q.size();            
-            while(size > 0){
-                TreeNode node = q.poll();
-                size--;
-                if(size == 0) 
-                    list.add(node.val);
-                if(node.left!=null)
-                    q.add(node.left);
-                if(node.right!=null)
-                    q.add(node.right);
+            TreeNode node = q.poll();
+
+            if(node.left!=null)
+                q.add(node.left);
+            if(node.right!=null)
+                q.add(node.right);
+            
+            size--;
+            if(size == 0){ 
+                list.add(node.val);
+                size = q.size();
             }
         }
         
