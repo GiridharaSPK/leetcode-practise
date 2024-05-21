@@ -31,13 +31,13 @@ public class Codec {
     public TreeNode deserialize(String data) {
         if(data.isEmpty()) return null;
         
-        Deque<String> q = new LinkedList(Arrays.asList(data.split(",")));
+        Queue<String> q = new LinkedList(Arrays.asList(data.split(",")));
         // recursive fun to set left and right nodes from start;
         return deserializeHelper(q); 
     }
     
     // preorder - current node (null check + update left + update right)
-    private TreeNode deserializeHelper(Deque<String> q){
+    private TreeNode deserializeHelper(Queue<String> q){
         if(q.isEmpty()) return null;
         
         TreeNode root = null;
