@@ -39,16 +39,15 @@ public class Codec {
         return read(list); // recursive fun to set left and right nodes from start;
     }
     
-    // preorder - current node (null check + )
+    // preorder - current node (null check + update left + update right)
     private TreeNode read(ArrayList<String> list){
         if(list.isEmpty()) return null;
         
         TreeNode root = null;
-        String s = list.get(0);
+        String s = list.remove(0);
         if(!s.equals("null")){
             root = new TreeNode(Integer.parseInt(s));
         }
-        list.remove(0);
         if(root != null){
             root.left = read(list);
             root.right = read(list);
