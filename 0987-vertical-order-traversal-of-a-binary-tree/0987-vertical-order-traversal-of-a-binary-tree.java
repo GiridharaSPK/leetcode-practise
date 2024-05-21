@@ -16,11 +16,16 @@
 class Solution {
     public List<List<Integer>> verticalTraversal(TreeNode root) {
         int[] minMax = {0,0};
-        TreeMap<Integer, PriorityQueue<int[]>> map = new TreeMap<Integer, PriorityQueue<int[]>>();
+        // tried TreeMap to automatically maintain minMax[] but no performance difference
+        // TreeMap<Integer, PriorityQueue<int[]>> map = new TreeMap<Integer, PriorityQueue<int[]>>();
+        HashMap<Integer, PriorityQueue<int[]>> map = new HashMap<Integer, PriorityQueue<int[]>>();
+
         helper(root, 0, 0, map, minMax);
         List<List<Integer>> ans = new ArrayList<>();
-        for(Map.Entry<Integer,PriorityQueue<int[]>> entry : map.entrySet()) {
-            PriorityQueue<int[]> pq = entry.getValue();
+        // for(Map.Entry<Integer,PriorityQueue<int[]>> entry : map.entrySet()) {
+            // PriorityQueue<int[]> pq = entry.getValue();
+        for(int i = minMax[0]; i <= minMax[1]; i++){
+            PriorityQueue<int[]> pq = map.get(i);
             List<Integer> list = new ArrayList();
             while(!pq.isEmpty()){
                 int[] ar = pq.poll();
@@ -32,7 +37,9 @@ class Solution {
     }
     
     private void helper(TreeNode root, int pos, int level,
-                        TreeMap<Integer, PriorityQueue<int[]>> map, int[] minMax){
+                        HashMap<Integer, PriorityQueue<int[]>> map, 
+                        // TreeMap<Integer, PriorityQueue<int[]>> map, 
+                        int[] minMax){
         if(root == null) return;
         
         PriorityQueue<int[]> pq;
