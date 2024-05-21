@@ -16,11 +16,11 @@
 class Solution {
     public List<List<Integer>> verticalTraversal(TreeNode root) {
         int[] minMax = {0,0};
-        HashMap<Integer, PriorityQueue<int[]>> map = new HashMap<Integer, PriorityQueue<int[]>>();
+        TreeMap<Integer, PriorityQueue<int[]>> map = new TreeMap<Integer, PriorityQueue<int[]>>();
         helper(root, 0, 0, map, minMax);
         List<List<Integer>> ans = new ArrayList<>();
-        for(int i = minMax[0]; i <= minMax[1]; i++){
-            PriorityQueue<int[]> pq = map.get(i);
+        for(Map.Entry<Integer,PriorityQueue<int[]>> entry : map.entrySet()) {
+            PriorityQueue<int[]> pq = entry.getValue();
             List<Integer> list = new ArrayList();
             while(!pq.isEmpty()){
                 int[] ar = pq.poll();
@@ -32,19 +32,18 @@ class Solution {
     }
     
     private void helper(TreeNode root, int pos, int level,
-                        HashMap<Integer, PriorityQueue<int[]>> map, int[] minMax){
+                        TreeMap<Integer, PriorityQueue<int[]>> map, int[] minMax){
         if(root == null) return;
         
+        PriorityQueue<int[]> pq;
+        int[] ar = {level, pos, root.val};
         if(map.containsKey(pos)){
-            PriorityQueue<int[]> pq = map.get(pos);
-            int[] ar = {level, pos, root.val};
+            pq = map.get(pos);
             pq.offer(ar);            
         }else{
-            PriorityQueue<int[]> pq = 
-                new PriorityQueue<int[]>((a,b)->(
+            pq = new PriorityQueue<int[]>((a,b)->( // prefer level asc order then prefer lower root.val
                     (a[0]-b[0]!=0 ? a[0]-b[0] : a[2]-b[2])
                 ));
-            int[] ar = {level, pos, root.val};
             pq.offer(ar);
             map.put(pos, pq);
         }
