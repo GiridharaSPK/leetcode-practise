@@ -13,20 +13,18 @@ public class Codec {
     public String serialize(TreeNode root) {
         if(root == null) return "";
         
-        ArrayList<String> list = new ArrayList<String>();
-        serializeHelper(root, list);
-        
-        return String.join(",",list); // String of comma seperated strings of node values
+        return serializeHelper(root, new StringBuilder()).toString();
     }
     
-    private void serializeHelper(TreeNode node, ArrayList<String> list){
+    private StringBuilder serializeHelper(TreeNode node, StringBuilder sb){
         if(node == null){ 
-            list.add("null");
+            sb.append("null,");
         }else{ // preorder
-            list.add(String.valueOf(node.val));
-            serializeHelper(node.left, list);
-            serializeHelper(node.right, list);   
+            sb.append(String.valueOf(node.val)).append(",");
+            serializeHelper(node.left, sb);
+            serializeHelper(node.right, sb);   
         }
+        return sb;
     }
 
     // Decodes your encoded data to tree.
