@@ -10,9 +10,7 @@
 public class Codec {
 
     // Encodes a tree to a single string.
-    public String serialize(TreeNode root) {
-        if(root == null) return "";
-        
+    public String serialize(TreeNode root) {        
         return serializeHelper(root, new StringBuilder()).toString();
     }
     
@@ -28,9 +26,7 @@ public class Codec {
     }
 
     // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
-        if(data.isEmpty()) return null;
-        
+    public TreeNode deserialize(String data) {        
         Queue<String> q = new LinkedList(Arrays.asList(data.split(",")));
         // recursive fun to set left and right nodes from start;
         return deserializeHelper(q); 
