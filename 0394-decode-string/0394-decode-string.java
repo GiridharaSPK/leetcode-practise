@@ -12,9 +12,12 @@ class Solution {
         
         // Use Stack to push all not just numbers,
         // use same stack for all chars 
-        // and pop at ] until [ and number and repeat;
+        // and pop at ] until [ to get str and get number 
         
-        Stack<String> stack = new Stack<String>();
+        // and repeat;
+        
+        Stack<String> stack = new Stack<String>(); 
+        // can also use Stack of Characters
         int num = 0;
         
         for(int i = 0; i < s.length(); i++){
@@ -22,7 +25,7 @@ class Solution {
             if(ch == ']'){
                 // found closing bracket
                 
-                // read string until [
+                // keep popping - read string until [
                 String temp = "";
                 while(!stack.isEmpty()){
                     if(stack.peek().equals("[")){
