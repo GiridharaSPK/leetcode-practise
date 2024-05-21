@@ -14,18 +14,18 @@ public class Codec {
         if(root == null) return "";
         
         ArrayList<String> list = new ArrayList<String>();
-        preorderAdd(root, list);
+        serializeHelper(root, list);
         
-        return String.join(",", list);
+        return String.join(",",list); // String of comma seperated strings of node values
     }
     
-    private void preorderAdd(TreeNode node, ArrayList<String> list){
-        if(node == null) 
+    private void serializeHelper(TreeNode node, ArrayList<String> list){
+        if(node == null){ 
             list.add("null");
-        else{
+        }else{ // preorder
             list.add(String.valueOf(node.val));
-            preorderAdd(node.left, list);
-            preorderAdd(node.right, list);   
+            serializeHelper(node.left, list);
+            serializeHelper(node.right, list);   
         }
     }
 
@@ -33,24 +33,23 @@ public class Codec {
     public TreeNode deserialize(String data) {
         if(data.isEmpty()) return null;
         
-        List<String> temp = Arrays.asList(data.split(","));
-        ArrayList<String> list = new ArrayList();
-        list.addAll(temp);
-        return read(list); // recursive fun to set left and right nodes from start;
+        Queue<String> q = new LinkedList(Arrays.asList(data.split(",")));
+        // recursive fun to set left and right nodes from start;
+        return deserializeHelper(q); 
     }
     
     // preorder - current node (null check + update left + update right)
-    private TreeNode read(ArrayList<String> list){
-        if(list.isEmpty()) return null;
+    private TreeNode deserializeHelper(Queue<String> q){
+        if(q.isEmpty()) return null;
         
         TreeNode root = null;
-        String s = list.remove(0);
+        String s = q.poll();
         if(!s.equals("null")){
             root = new TreeNode(Integer.parseInt(s));
         }
         if(root != null){
-            root.left = read(list);
-            root.right = read(list);
+            root.left = deserializeHelper(q);
+            root.right = deserializeHelper(q);
         }
         return root;
     }
