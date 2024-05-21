@@ -11,7 +11,7 @@ class Solution {
         // approach1: using a single stack
         
         // Use Stack to push all not just numbers,
-        // use same stack for all chars 
+        // use same stack for all chars (push ] and [ as well)
         // and pop at ] until [ to get str and get number 
         
         // and repeat;
@@ -63,6 +63,8 @@ class Solution {
         return ans;
         
         // approach2: using 2 stacks - counts and strings - slower than approach 1
+        // dont push ] and [
+
         /*
         Stack<Integer> counts = new Stack<Integer>();
         Stack<String> strings = new Stack<String>();        
@@ -77,7 +79,6 @@ class Solution {
         // so, add existing string to string stack - to pop after resolving current str
         // and add count to count stack
         // reset str (and strNum)
-        
         // between [ and ] and not digit
         // keep appending str (store currently traversing string - has freq top of counts)
         
