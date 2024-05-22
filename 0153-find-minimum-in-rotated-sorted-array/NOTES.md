@@ -6,8 +6,8 @@
 
 
 // test cases
-1 - 1 element 2 element arrays
-2 - single rotation
-3 - n-1 rotations
-4 - mid rotations - min is exactly at mid or pivot is at mid
-5 - all equal elements or duplicate elements
+- 1 element 2 element arrays
+- single rotation
+- n-1 rotations
+- mid rotations - min is exactly at mid or pivot is at mid
+- all equal elements or duplicate elements
