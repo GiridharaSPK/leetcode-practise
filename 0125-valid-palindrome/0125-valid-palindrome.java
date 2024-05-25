@@ -8,11 +8,11 @@ class Solution {
         int start = 0;
         int last = s.length()-1;
         
-        // approch 2: with single while loop
-        // doing only 1 thing in an iteration - 
-            // either checking start and last ptrs if valid 
+        // approch 1: with single while loop
+        // doing only 1 thing in an iteration - (slower than approach 1)
+            // either checking start and last ptrs if not valid and move ptrs to valid chars
             // or comparing chars for palindrome check and ** move to next
-        while(last >= start){
+        /**while(last >= start){
             if(last < 0) break;
             if(start >= s.length()) break;
             if(!Character.isDigit(s.charAt(start)) && !Character.isLetter(s.charAt(start))){
@@ -26,10 +26,10 @@ class Solution {
                 start++;
                 last--;
             }
-        }
+        }*/
         
         // approach 1 : with multiple while loops
-        /**while(last >= start){
+        while(last >= start){
             // should be 'while' not 'if' - move to next character
             while(last >= 0){  //** cannot combine isLetter check and decrement 
                 // can decrease to -ve inside this loop 
@@ -51,7 +51,7 @@ class Solution {
             start++;
             last--;
         }
-        */
+
         return true;
     }
 }
