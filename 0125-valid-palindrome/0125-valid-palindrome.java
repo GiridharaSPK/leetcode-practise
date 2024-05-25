@@ -14,7 +14,7 @@ class Solution {
             // either checking start and last ptrs if not valid and move ptrs to next chars
             // or comparing current chars for palindrome and move to next chars
             // in both cases moving only 1 step in 1 iteration
-        while(last >= 0 && start < s.length() && last >= start){
+        while(last > start){
             char cs = s.charAt(start);
             char cl = s.charAt(last);
             
