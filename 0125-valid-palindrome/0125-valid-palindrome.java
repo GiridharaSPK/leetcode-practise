@@ -38,7 +38,7 @@ class Solution {
         // approach 1 : with multiple while loops
         /**while(last >= start){
             // should be 'while' not 'if' - move to next character
-            while(last >= 0){  //** cannot combine isLetter check and decrement 
+            while(last >= 0){
                 // can decrease to -ve inside this loop 
                 // inner loop needs check 
                 // make sure every loop ends correctly
