@@ -16,18 +16,18 @@ class Solution {
             while(j < k){
                 int sum = nums[i]+nums[j]+nums[k];
                 // i and target are fixed - can only change j and k
-                // update abs_min and ans, whenever found a closer triplet
-                if(min > Math.abs(sum - target)){
-                    min = Math.abs(sum - target);
-                    ans = sum;
-                }
-                
                 if(sum > target){
                     k--;
                 }else if(sum < target){
                     j++;
                 }else{
                     return target;
+                }
+                
+                // update abs_min and ans, whenever found a closer triplet
+                if(min > Math.abs(sum - target)){
+                    min = Math.abs(sum - target);
+                    ans = sum;
                 }
             }
             
