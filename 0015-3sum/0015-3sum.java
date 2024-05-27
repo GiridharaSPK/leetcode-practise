@@ -17,7 +17,7 @@ class Solution {
         
         // approach 3 : 
         // (we need not return indexes) 
-        // and (a solution better than O(n square) without sorting)
+        // and (a solution better than O(n square) with sorting)
         // sort + iterate and 2 sum (j,k) for each i
         
         // * mentioned that ans shouldnt contain duplicates - very important
