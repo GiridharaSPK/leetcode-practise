@@ -1,9 +1,9 @@
 class Solution {
     public boolean isValid(String s) {
-        if(s.isEmpty()) return true;
+        // if(s.isEmpty()) return true;
         
         int len = s.length();
-        if(len%2 == 1) return false;
+        // if(len%2 == 1) return false;
         
         Stack<Character> stack = new Stack<Character>();
         int p = 0;
