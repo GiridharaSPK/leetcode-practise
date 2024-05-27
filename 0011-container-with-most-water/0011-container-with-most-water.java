@@ -18,7 +18,9 @@ class Solution {
                 left++;
                 right--;
             }
-            max = Math.max(area, max);
+            if(area > max){
+                max = area;               
+            }
         }
         
         return max;
