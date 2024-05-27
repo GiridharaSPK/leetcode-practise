@@ -4,7 +4,9 @@ class Solution {
         if(nums.length == 3) return ans;
         
         int min = Integer.MAX_VALUE;
-        // similar to 3 sum but no mention of duplicates 
+        // similar to 3sum 
+        // traverse all and keep track of min
+        // but no mention of duplicates 
         Arrays.sort(nums);
         
         for(int i = 0; i < nums.length-2; i++){
@@ -14,8 +16,7 @@ class Solution {
             while(j < k){
                 int sum = nums[i]+nums[j]+nums[k]-target; 
                 // i and target are fixed - can only change j and k
-// [4,0,5,-5,3,3,0,-4,-5] -> [-5, -5, -4, 0, 0, 3, 3, 4, 5]
-                // update min and ans, whenever found a closer triplet
+                // update abs_min and ans, whenever found a closer triplet
                 if(min > Math.abs(sum)){
                     min = Math.abs(sum);
                     ans = nums[i]+nums[j]+nums[k];
