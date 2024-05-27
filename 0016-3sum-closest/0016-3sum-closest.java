@@ -14,17 +14,17 @@ class Solution {
             int k = nums.length-1;
             
             while(j < k){
-                int sum = nums[i]+nums[j]+nums[k]-target; 
+                int sum = nums[i]+nums[j]+nums[k];
                 // i and target are fixed - can only change j and k
                 // update abs_min and ans, whenever found a closer triplet
-                if(min > Math.abs(sum)){
-                    min = Math.abs(sum);
-                    ans = nums[i]+nums[j]+nums[k];
+                if(min > Math.abs(sum - target)){
+                    min = Math.abs(sum - target);
+                    ans = sum;
                 }
                 
-                if(sum > 0){
+                if(sum > target){
                     k--;
-                }else if(sum < 0){
+                }else if(sum < target){
                     j++;
                 }else{
                     return target;
