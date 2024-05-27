@@ -8,20 +8,22 @@ class Solution {
 
         int left = 0;
         int right = height.length-1;
-    
+        int width = (right-left);
         
         while(left < right){
-            int width = (right-left);
             if(height[left] < height[right]){
                 area = height[left] * width;
                 left++;
+                width--;
             }else if(height[left] > height[right]){
                 area = height[right] * width;
                 right--;
+                width--;
             }else{
                 area = height[right] * width;
                 left++;
                 right--;
+                width-=2;
             }
             if(area > max){
                 max = area;               
