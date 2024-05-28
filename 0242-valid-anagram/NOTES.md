@@ -1,1 +1,7 @@
 - Java String length = s.length()
+-
+- string to char[] - s.toCharArray()
+- char[] to string - String.valueOf(charArray)
+-
+- string[] to string - String.join("", stringArray);
+- string to string[] - str.split("");
