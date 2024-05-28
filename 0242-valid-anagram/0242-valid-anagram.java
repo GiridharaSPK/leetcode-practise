@@ -3,7 +3,8 @@ class Solution {
         if(s.isEmpty() && t.isEmpty()) return true;
         if(s.length()!=t.length()) return false;
         
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        // using extra space
+        /*HashMap<Character, Integer> map = new HashMap<Character, Integer>();
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
             if(map.containsKey(c)){
@@ -21,6 +22,21 @@ class Solution {
                 return false;            
             }
         }
-        return true;
+        return true;*/
+        
+        // without using extra space - sort the string
+        // String[] sc = s.split("");
+        char[] sc = s.toCharArray();
+        Arrays.sort(sc);
+        // String s1 = String.join("", sc);
+        String s1 = String.valueOf(sc);
+        
+        // String[] tc = t.split("");
+        char[] tc = t.toCharArray();
+        Arrays.sort(tc);
+        // String t1 = String.join("", tc);
+        String t1 = String.valueOf(tc);
+        
+        return s1.equals(t1);
     }
 }
