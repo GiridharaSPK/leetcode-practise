@@ -29,15 +29,16 @@ class Solution {
     private void bfs(int[][] image, int m, int n, Queue<Point> q, int color, int fc){
         while(!q.isEmpty()){
             Point p = q.remove();
-            if(image[p.x][p.y] != fc) continue;
+            if(image[p.x][p.y] != fc) continue; // already colored
             
-            image[p.x][p.y] = color;
+            image[p.x][p.y] = color; // color
             int[][] dir = {{-1,0},{0,1},{0,-1},{1,0}};
 
+            // traverse to surrounding nodes
             for(int k = 0; k < 4;k++){
                 int nr = p.x + dir[k][0];
                 int nc = p.y + dir[k][1];
-                if(isSafe(nr, nc, m, n)) 
+                if(isSafe(nr, nc, m, n)) // check each node if valid to traverse
                     q.add(new Point(nr, nc));
             }
         }
@@ -48,8 +49,8 @@ class Solution {
     }
     
     private void dfs(int[][] image, int r, int c, int m, int n, int color, int fc){
-        if(image[r][c] != fc) return;
-        // can also add extra check if  '== color' (|| image[r][c] == color) - but appears redundant
+        if(image[r][c] != fc) return; // already color changed from inital color to new color
+        // can also add extra check if  '== color' (|| image[r][c] == color) - but appears redundant - this check is to see if it has to be colored
         
         image[r][c] = color;
         int[][] dir = {{-1,0}, {0, 1}, {1, 0}, {0, -1}};
