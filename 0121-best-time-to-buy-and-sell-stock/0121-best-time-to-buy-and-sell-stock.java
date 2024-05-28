@@ -19,11 +19,12 @@ class Solution {
                 left = right;
                 right = left+1;
             }
-        }*/
+        }*/ // both above and below approches are same - sliding window
         while(right < n){
             while(right < n && prices[left] < prices[right]){
-                if(max < prices[right] - prices[left]){
-                    max = prices[right] - prices[left];
+                int profit = prices[right] - prices[left];
+                if(max < profit){
+                    max = profit;
                 }
                 right++;
             }
