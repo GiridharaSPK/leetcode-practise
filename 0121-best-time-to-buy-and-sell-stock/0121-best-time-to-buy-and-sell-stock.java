@@ -10,14 +10,15 @@ class Solution {
         int right = 1;
         
         while(right < n){
-            while(right < n && prices[left] < prices[right]){
+            if(prices[left] < prices[right]){
                 if(max < prices[right] - prices[left]){
                     max = prices[right] - prices[left];
                 }
                 right++;
+            }else{
+                left = right;
+                right = left+1;
             }
-            left = right;
-            right = left+1;
         }
         
         
