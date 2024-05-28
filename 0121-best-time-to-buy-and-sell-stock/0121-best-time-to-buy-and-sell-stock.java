@@ -9,7 +9,7 @@ class Solution {
         int left = 0;
         int right = 1;
         
-        while(right < n){
+        /*while(right < n){
             if(prices[left] < prices[right]){
                 if(max < prices[right] - prices[left]){
                     max = prices[right] - prices[left];
@@ -19,6 +19,16 @@ class Solution {
                 left = right;
                 right = left+1;
             }
+        }*/
+        while(right < n){
+            while(right < n && prices[left] < prices[right]){
+                if(max < prices[right] - prices[left]){
+                    max = prices[right] - prices[left];
+                }
+                right++;
+            }
+            left = right;
+            right = left+1;
         }
         
         
