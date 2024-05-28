@@ -18,11 +18,12 @@ class Solution {
         // * if the initial color is same as given color no need to dfs
         if(fc == color) return image; 
         
-        Queue<Point> q = new LinkedList<Point>();
+        //bfs
+        /*Queue<Point> q = new LinkedList<Point>();
         q.add(new Point(sr, sc));
-        bfs(image, m, n, q, color, fc);
+        bfs(image, m, n, q, color, fc);*/
         
-        // dfs(image, sr, sc, m, n, color, fc);
+        dfs(image, sr, sc, m, n, color, fc);
         return image;
     }
     
