@@ -25,16 +25,20 @@ class Solution {
         return true;*/
         
         // without using extra space - sort the string
-        // String[] sc = s.split("");
+        /*String[] sc = s.split("");
+        Arrays.sort(sc);
+        String s1 = String.join("", sc);
+        
+        String[] tc = t.split("");
+        Arrays.sort(tc);
+        String t1 = String.join("", tc);*/
+        
         char[] sc = s.toCharArray();
         Arrays.sort(sc);
-        // String s1 = String.join("", sc);
         String s1 = String.valueOf(sc);
         
-        // String[] tc = t.split("");
         char[] tc = t.toCharArray();
         Arrays.sort(tc);
-        // String t1 = String.join("", tc);
         String t1 = String.valueOf(tc);
         
         return s1.equals(t1);
