@@ -1,5 +1,7 @@
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
+        
+        //
         HashMap<Character, Integer> map = new HashMap<>();
         
         for(char c : magazine.toCharArray()){
