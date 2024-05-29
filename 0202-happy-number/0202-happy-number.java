@@ -3,7 +3,7 @@ class Solution {
         
         // approach 2: use Floyd's cycle finding algorithm - rabbit and hare approach
         int slow = n;
-        int fast = slow; // start with next to make it enter the loop
+        int fast = slow;
         while(slow != 1){
             slow = next(slow);
             fast = next(next(fast));
