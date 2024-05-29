@@ -18,7 +18,7 @@ class Solution {
         ListNode s = head.next;
         ListNode t = head.next.next;
         
-        f.next = null; // first node should be last node
+        f.next = null; // ** first node should be last node [imp to avoid cycle]
         while(s!=null){
             s.next = f;
             f = s;
