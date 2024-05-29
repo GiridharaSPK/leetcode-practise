@@ -20,7 +20,19 @@ class Solution {
             }
         }
         
-        return ans;
+        // as informed in the question there is always a majority element so return it
+        // return ans;
         
+        // but if there is chance of not having a majority element
+        if(count <= 0){
+            return -1;
+        }
+        int checkCount = 0; // to verify if the expected ans is majority or not
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == ans) checkCount++;
+        }
+        if(checkCount > nums.length/2) 
+            return ans;
+        return -1;
     }
 }
