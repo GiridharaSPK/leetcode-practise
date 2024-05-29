@@ -3,10 +3,11 @@ class Solution {
         
         // approach 2: use Floyd's cycle finding algorithm - rabbit and hare approach
         int slow = n;
-        int fast = next(slow); // start with next to make it enter the loop
-        while(slow != 1 && slow!=fast){
+        int fast = slow; // start with next to make it enter the loop
+        while(slow != 1){
             slow = next(slow);
             fast = next(next(fast));
+            if(slow == fast) break;
         }
         return slow == 1;
         
