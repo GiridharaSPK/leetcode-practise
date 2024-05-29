@@ -1,14 +1,29 @@
 class Solution {
     public boolean isHappy(int n) {
         
-        // approach 2: use Floyd's cycle finding algorithm - rabbit and hare approach
+        // approach 3: use Floyd's cycle finding algorithm - rabbit and hare approach
+        // start at same place
         int slow = n;
         int fast = slow;
-        while(slow != 1){
+        while(slow != 1){ // dont put slow!=fast in while because they both start same values
             slow = next(slow);
             fast = next(next(fast));
             if(slow == fast) break;
         }
+        /*
+        // approach 2: use Floyd's cycle finding algorithm - rabbit and hare approach
+        // fast starts a little ahead of slow
+        
+        int slow = n;
+        // starting fast 1 step ahead of slow - to make it enter the while loop
+        int fast = next(n); 
+        while(slow != 1 && slow!=fast){
+            slow = next(slow);
+            fast = next(next(fast));
+            if(slow == fast) break;
+        }
+        */
+        
         return slow == 1;
         
         // approach 1: use recursion and set of visited nodes to detect cycle
