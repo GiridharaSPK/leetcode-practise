@@ -10,11 +10,13 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        if(head == null || head.next == null) return head;
+        if(head == null || head.next == null) return head; //dont forget
         
         ListNode fast = head;
         ListNode slow = head;
-        while(fast!=null && fast.next!=null){
+        // adding fast.next to while condition is imp
+        // from test cases - fast ptr have be at last if odd nodes, null if even
+        while(fast!=null && fast.next!=null){ 
             fast = fast.next.next;
             slow = slow.next;
         }
