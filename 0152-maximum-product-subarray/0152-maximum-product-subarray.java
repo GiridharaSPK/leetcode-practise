@@ -3,6 +3,7 @@ class Solution {
         int n = nums.length;
         
         // striver's approach - calculate product from 2 sides reset at 0
+        // we can get this idea by trying with a lot of test cases
         /*int maxProduct = Integer.MIN_VALUE;
         int pref_product = 1; // to keep track of products from left
         int suf_product = 1; //to keep track of products from right
@@ -27,7 +28,8 @@ class Solution {
         
         return maxProduct;*/
         
-        //neetcode's approach
+        //neetcode's approach - // slower than strivers, but more intuitive 
+        // (modification of kadane's)
         // at 0s we reset the values 
         // to track negative products we need to maintain 2 products 
         // currMax and currMin 
