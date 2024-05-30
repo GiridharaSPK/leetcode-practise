@@ -10,9 +10,18 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
+        // recursive approach
+        if(head == null || head.next == null) return head;
+    
+        ListNode temp = head.next; //storing the last node of the reversed sublist
+        ListNode reversedHead = reverseList(head.next); // returns reversed sublist head
+        head.next = null;
+        temp.next = head;        
+        return reversedHead;
+        
         // approach without using dummy node - swapping pointers
         // 3 pointer approach - starting from null, curr and next
-        ListNode prev = null;
+        /*ListNode prev = null;
         ListNode curr = head;
         while(curr!=null){
             // backup next node
@@ -23,7 +32,7 @@ class Solution {
             prev = curr;
             curr = next;
         }
-        return prev;
+        return prev;*/
         // 3 pointer approach - starting from first node
         
         /*if(head == null || head.next == null) return head;
