@@ -10,10 +10,24 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if(head == null || head.next == null) return head;
-        // there are atleast 2 nodes
-        
         // approach without using dummy node - swapping pointers
+        // 3 pointer approach - starting from null, curr and next
+        ListNode prev = null;
+        ListNode curr = head;
+        while(curr!=null){
+            // backup next node
+            ListNode next = curr.next;
+            // realign link
+            curr.next = prev;
+            // propogate
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+        // 3 pointer approach - starting from first node
+        
+        /*if(head == null || head.next == null) return head;
+        // there are atleast 2 nodes
         ListNode f = head;
         ListNode s = head.next;
         ListNode t = head.next.next;
@@ -26,7 +40,7 @@ class Solution {
             if(t!=null)
                 t = t.next;
         }
-        return f;
+        return f;*/
         
         // approach using a dummyNode - faster then 100%
         /*ListNode dummy = new ListNode(-1);
