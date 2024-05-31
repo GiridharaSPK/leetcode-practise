@@ -1,22 +1,26 @@
 class Solution {
     public List<String> removeInvalidParentheses(String s) {
-        int l = s.length();
+        int l = s.length(); // storing the initial length
         List<String> ans = new ArrayList<String>();
         HashSet<String> visited = new HashSet<String>();
-        int c = removeCount(s);
-        // BFS
+        int c = removeCount(s); // stores how many chars can be removed
+        
+        // BFS approach to avoid duplicate char removal
         Queue<String> q = new LinkedList<String>();
         q.add(s);
         
         while(!q.isEmpty()){
             String str = q.poll();
+            
+             // removed more than req chars
+            if(str.length() < l-c)
+                continue;
+
             int count = removeCount(str);
             if(count == 0){
                 ans.add(str);
                 continue;
             }
-            if(str.length() < l-c) // removed more than req chars
-                continue;
             
             for(int i = 0; i < str.length(); i++){
                 if(str.charAt(i) == '(' || str.charAt(i) == ')'){
@@ -40,25 +44,6 @@ class Solution {
             return new ArrayList<String>();
         helper(s, ans, remCount);
         return new ArrayList(ans);*/
-    }
-    
-    private void helper(String s, HashSet<String> ans, 
-                        int remCount){
-        if(remCount == 0 && removeCount(s) == 0){
-            ans.add(s);
-            return;
-        }
-        for(int i = 0; i < s.length(); i++){
-            if(i >0 && s.charAt(i) == s.charAt(i-1)) 
-                continue;
-            if(s.charAt(i) == '(' || s.charAt(i) == ')'){
-                StringBuilder sb = new StringBuilder();
-                sb.append(s);
-                sb.deleteCharAt(i);
-                helper(sb.toString(), ans, remCount-1);
-            }
-        }
-        
     }
     
     private int removeCount(String s){ 
@@ -95,5 +80,25 @@ class Solution {
         }
         return stack.size();
         */
+    }
+    
+    // used in DFS approach
+    private void helper(String s, HashSet<String> ans, 
+                        int remCount){
+        if(remCount == 0 && removeCount(s) == 0){
+            ans.add(s);
+            return;
+        }
+        for(int i = 0; i < s.length(); i++){
+            if(i >0 && s.charAt(i) == s.charAt(i-1)) 
+                continue;
+            if(s.charAt(i) == '(' || s.charAt(i) == ')'){
+                StringBuilder sb = new StringBuilder();
+                sb.append(s);
+                sb.deleteCharAt(i);
+                helper(sb.toString(), ans, remCount-1);
+            }
+        }
+        
     }
 }
