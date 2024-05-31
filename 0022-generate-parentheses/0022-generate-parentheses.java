@@ -1,14 +1,18 @@
 class Solution {
+   
     public List<String> generateParenthesis(int n) {
         
         // recursion/ backtracking apporach 
         // keep generating brackets but with check on num of open and close brackets
+        /*
         List<String> ans = new ArrayList<String>();
         helper(n, "", 0, 0, ans);
         return ans;
-        
+        */
+            
         // dynamic programming approach - sumeet
-        /*List<String>[] dp = new List[n+1]; // dont use List<Stirng>[n+1] 
+        List<String>[] dp = new List[n+1]; 
+        // dont use new List<String>[n+1]; - generic array creation error
         dp[0] = Arrays.asList("");
         dp[1] = Arrays.asList("()");
         
@@ -38,8 +42,8 @@ class Solution {
             }
         }
         
-        return dp[n];*/
-    }
+        return dp[n];
+   }
     
     private void helper(int n, String str,
                                  int openCount, int closedCount, 
