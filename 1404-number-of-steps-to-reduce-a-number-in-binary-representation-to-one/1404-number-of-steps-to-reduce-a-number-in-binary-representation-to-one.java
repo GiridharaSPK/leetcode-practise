@@ -7,9 +7,10 @@ class Solution {
         // approach with carry, no extra space -> O(n) time 
         int carry = 0;
         for(int i = l-1; i > 0 ; i--){
-            int temp = (Character.getNumericValue(s.charAt(i)) + carry)%2; // adding 1
-            if(temp == 1){ 
-                carry = 1;
+            // int temp = (Character.getNumericValue(s.charAt(i)) + carry)%2; // adding 1
+            // if(temp == 1){ 
+            if((carry == 0 && s.charAt(i) == '1') || (carry == 1 && s.charAt(i) == '0')){
+                carry=1;
                 count+=2; // add 1 and remove 0
             }else{
                 count++; // remove 0 (even num case or part of addition case)
