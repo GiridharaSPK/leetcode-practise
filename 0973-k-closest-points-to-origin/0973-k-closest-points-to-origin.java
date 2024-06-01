@@ -1,7 +1,7 @@
 class Solution {
     public int[][] kClosest(int[][] points, int k) {
-        // quick sort - quick select
-        int low = 0;
+        // quick sort - quick select - running in 800ms
+        /*int low = 0;
         int high = points.length-1;
         while(low < high){
             int pivot = partition(points, low, high); //returns pivot index 
@@ -15,9 +15,9 @@ class Solution {
             }
         }
         
-        return Arrays.copyOfRange(points, 0, k);
+        return Arrays.copyOfRange(points, 0, k);*/
         
-        /* Priority Queue approach 56 ms
+        // Priority Queue approach 56 ms
         // imp - edge case when n = k
         // edge case when pq.size() doesnt exceed k at any point
         // create a max heap
@@ -44,7 +44,7 @@ class Solution {
             ans[i][1] = p[1];
             i++;
         }
-        return ans;*/
+        return ans;
     }
     
     private int partition(int[][] points, int low, int high){
