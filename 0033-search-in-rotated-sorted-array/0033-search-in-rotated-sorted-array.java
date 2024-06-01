@@ -10,16 +10,20 @@ class Solution {
                 return mid;
             }
             // if(nums[low] < nums[mid])
-            // low can be equal to mid at some iteration so make it '<='
+            // ** IMP - low can be equal to mid at some iteration so make it '<='
             if(nums[low] <= nums[mid]){ 
-                //left - sorted 
+                // left of mid - sorted 
+                // IMP ** to search within sorted check both conditions
+                // IMP ** target lies between mid and low 
                 if(target < nums[mid] && target >= nums[low]){
                     high = mid-1;
                 }else{
                     low = mid+1;
                 }
             }else{
-                //right - sorted
+                // right of mid is sorted 
+                // IMP ** to search within sorted check both conditions
+                // IMP ** target lies between mid and high
                 if(target > nums[mid] && target <= nums[high]){
                     low = mid+1;
                 }else{
