@@ -2,7 +2,7 @@ class Solution {
     public int[][] kClosest(int[][] points, int k) {
         // imp - edge case n=k
         // create a max heap
-        PriorityQueue<Point> pq = new PriorityQueue<Point>((a,b)-> dist(b) - dist(a));
+        PriorityQueue<int[]> pq = new PriorityQueue<int[]>((a,b)-> dist(b) - dist(a));
         for(int i = 0; i < points.length; i++){
             // add to pq
             // remove an element if pq.size > k
@@ -11,8 +11,9 @@ class Solution {
             if(pq.size() > k){ 
                 pq.poll();
             }
-            pq.add(new Point(points[i][0], points[i][1]));
-            // pq at any give point has a max of k+1 elements
+            int[] p = {points[i][0], points[i][1]};
+            pq.add(p);
+            // pq at any give point has a max of k+1 elements or less
         }
         if(pq.size() == k+1) // check size before removing (k+1)th element
             pq.poll();
@@ -20,24 +21,16 @@ class Solution {
         int[][] ans = new int[k][2];
         int i = 0;
         while(pq.size() > 0){
-            Point p = pq.poll();
-            ans[i][0] = p.x;
-            ans[i][1] = p.y;
+            int[] p = pq.poll();
+            ans[i][0] = p[0];
+            ans[i][1] = p[1];
             i++;
         }
         return ans;
     }
     
-    private int dist(Point p){
-        return (int)(Math.pow(p.x,2)+ Math.pow(p.y,2));
+    private int dist(int[] p){
+        return (int)(Math.pow(p[0],2)+ Math.pow(p[1],2));
     }
     
-    class Point{
-        int x;
-        int y;
-        Point(int x, int y){
-            this.x = x;
-            this.y = y;
-        }
-    }
 }
