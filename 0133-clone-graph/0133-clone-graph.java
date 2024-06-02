@@ -20,22 +20,56 @@ class Node {
 
 class Solution {
     public Node cloneGraph(Node node) {
-        if(node == null) return null;
-        HashMap<Node, Node> map = new HashMap();
-        return clone(node, map);
-    }
-    
-    private Node clone(Node node, HashMap<Node, Node> map){
-        Node newNode = new Node(node.val);
-        map.put(node, newNode);
-        for(Node n: node.neighbors){
-            if(map.containsKey(n)){
-                newNode.neighbors.add(map.get(n));
-            }else{
-                newNode.neighbors.add(clone(n, map));
+        // DFS - faster
+        // HashMap<Integer, Node> map = new HashMap<Integer, Node>();
+        // return clone(node, map);
+        
+        // BFS - slower
+        // node can be null - map cannot always work with <int,node>
+        HashMap<Node, Node> map = new HashMap<Node, Node>();
+        Queue<Node> q = new LinkedList<Node>();
+
+        q.offer(node);
+        
+        while(!q.isEmpty()){
+            Node curr = q.poll();
+            if(curr == null) continue;
+            if(!map.containsKey(curr)){
+                map.put(curr, new Node(curr.val));
+            }
+            // add children                
+            for(Node n : curr.neighbors){ // old neighbors
+                Node neighbor; // new neighbors
+                if(map.containsKey(n)){
+                    neighbor = map.get(n);
+                }else{
+                    neighbor = new Node(n.val);
+                    map.put(n, neighbor);
+                    q.offer(n);// adding only unvisted nodes to q 
+                    // we dont have any visited map or set
+                }
+                //  q.offer(n) - dont pass to q if already in map (already visited)
+                map.get(curr).neighbors.add(neighbor);
             }
         }
-        return newNode;
+        
+        return map.get(node);
+    }
+    
+    private Node clone(Node node, HashMap<Integer, Node> map){
+        if(node == null) return null;
+        if(map.containsKey(node.val)){
+            return map.get(node.val);
+        }else{
+            Node newNode = new Node(node.val);
+            map.put(node.val, newNode);
+            
+            for(Node n : node.neighbors){
+                newNode.neighbors.add(clone(n, map));
+            }
+            
+            return newNode;
+        }
     }
     
 }
