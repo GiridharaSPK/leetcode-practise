@@ -8,4 +8,6 @@
 - offer /add adj elements (of prev polled node) to heap after every iteration
 ​
 NOTE: when using int[] to store 2 or 3 integers like a pair be careful when updating an element and reusing, because as it is a change by reference, it would affect the previously added entry as well
-​
+
+Prims TC :(​V+E)log V
+This question = (E^2)(log E)
