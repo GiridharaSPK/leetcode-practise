@@ -1,5 +1,5 @@
 - Dijkstras uses **BFS** (difficult to track traversed distance with DFS)
-- BFS + Priority Queue (instead of queue) -> min heap to retrive nearest node from a given node
+- BFS + Priority Queue (instead of queue) -> min heap to retrive nearest node from a given node (dist, val)
 -
 - Time Complexity - **(V+E) log V **->
 ​
