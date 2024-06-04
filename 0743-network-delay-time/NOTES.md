@@ -9,4 +9,5 @@
 - traverse using bfs - easy to estimate updated path distance
 - to traverse to next nodes, when getting adj lists, makesure there are adj nodes (add contains check for map.get(node))
 - when next nodes are added to heap, update the dist = dist + currentDist (to keep track of traversed distances)
+-- heap.push(dist+currDistance, val)
 - edge case - check visited set size - if all the components of graph are not connected, the ans is **-1**
