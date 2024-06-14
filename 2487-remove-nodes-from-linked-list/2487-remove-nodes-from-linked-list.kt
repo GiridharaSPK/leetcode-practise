@@ -29,7 +29,7 @@ class Solution {
         // better approach without extra space
         // reverse the list 
         // traverse and delete smaller nodes
-        /*val newHead = reverse(head)
+        val newHead = reverse(head)
         var ptr : ListNode? = newHead
         var max = newHead.`val`
         var prev : ListNode? = null
@@ -44,11 +44,11 @@ class Solution {
             }
 
         }
-        return reverse(newHead)*/
+        return reverse(newHead)
     
         
         // O(n) using stack to traverse in reverse 
-        val stack = Stack<ListNode>()
+        /*val stack = Stack<ListNode>()
 
         var ptr = head
         while(ptr!=null){
@@ -67,6 +67,6 @@ class Solution {
             prev = curr
         }
         
-        return prev
+        return prev*/
     }
 }
