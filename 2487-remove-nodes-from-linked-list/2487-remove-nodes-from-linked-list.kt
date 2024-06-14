@@ -29,47 +29,44 @@ class Solution {
         // better approach without extra space
         // reverse the list 
         // traverse and delete smaller nodes
-        val newHead = reverse(head)
+        /*val newHead = reverse(head)
         var ptr : ListNode? = newHead
         var max = newHead.`val`
         var prev : ListNode? = null
         while(ptr!=null){
-            if(max <= ptr!!.`val`){
-                max = ptr!!.`val`
+            if(max <= ptr.`val`){
+                max = ptr.`val`
                 prev = ptr
-                ptr = ptr!!.next
+                ptr = ptr.next
             }else {
-                prev!!.next = ptr!!.next
-                ptr = ptr!!.next
+                prev?.next = ptr.next
+                ptr = ptr.next
             }
 
         }
-        return reverse(newHead)
+        return reverse(newHead)*/
     
-        /* 
+        
         // O(n) using stack to traverse in reverse 
-        // O(n) new space to create new linkedList
-        val stack = Stack<Int>()
+        val stack = Stack<ListNode>()
 
         var ptr = head
         while(ptr!=null){
-            stack.add(ptr.`val`)
+            while(!stack.isEmpty() && stack.peek().`val` < ptr.`val`){
+                stack.pop()
+            }
+            stack.add(ptr)
             ptr = ptr.next
         }
         
-        var max = stack.peek()
         var prev : ListNode? = null
         var curr : ListNode? = null
         while(!stack.isEmpty()){
-            val temp = stack.pop()
-            if(max <= temp){
-                max = temp
-                curr = ListNode(temp)
-                curr.next = prev
-                prev = curr
-            }
+            curr = stack.pop()
+            curr.next = prev
+            prev = curr
         }
         
-        return prev*/
+        return prev
     }
 }
