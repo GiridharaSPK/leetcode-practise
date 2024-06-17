@@ -5,7 +5,7 @@ class Solution {
         int r = (int)Math.sqrt(c);
         
         while(l <= r){
-            long sum = l*l + r*r;
+            int sum = l*l + r*r;
             if(sum == c){
                 return true;
             }
