@@ -1,11 +1,10 @@
-import kotlin.math.sqrt
 
 class Solution {
     fun judgeSquareSum(c: Int): Boolean {
         
         // approach 2 - Two pointer
         var l = 0
-        var r = sqrt(c.toDouble()).toInt()
+        var r = Math.sqrt(c.toDouble()).toInt()
         
         while(l <= r){
             val sum = l*l + r*r
