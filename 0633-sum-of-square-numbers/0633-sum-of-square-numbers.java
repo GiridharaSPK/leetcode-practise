@@ -1,31 +1,34 @@
 class Solution {
     public boolean judgeSquareSum(int c) {
-        /*if(c < 3) return true;
-        
-        long l = 0;
-        long r = c-1;
+        // two pointer approach
+        int l = 0;
+        int r = (int)Math.sqrt(c);
         
         while(l <= r){
-            if(l*l + r*r == c){
+            long sum = l*l + r*r;
+            if(sum == c){
                 return true;
             }
-            if(l*l + r*r < c){
-                l++;
-            }else{
+            // to manage overflowed integers r--
+            // sum of squares will never be -ve unless overflowed
+            if(sum > c || sum < 0){
                 r--;
+            }else{
+                l++;
             }
         }
         
-        return false;*/
+        return false;
         
         //O(n)
-        HashSet<Integer> set = new HashSet<Integer>();
+        /*HashSet<Integer> set = new HashSet<Integer>();
         
-        for(int i = 0; i <= (int)Math.sqrt(c); i++){
+        // for(int i = 0; i*i <= c; i++){ -> TLE - has to find sq at each iteration
+        for(int i = 0; i <= (int) Math.sqrt(c); i++){
             set.add(c - i*i);
             if(set.contains(i*i))
                 return true;            
         }
-        return false;
+        return false;*/
     }
 }
