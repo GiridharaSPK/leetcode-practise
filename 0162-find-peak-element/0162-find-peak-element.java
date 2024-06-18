@@ -7,7 +7,7 @@ class Solution {
         // i.e. look for nums[mid] and nums[mid+1] and move towards a potential solution
         while(l < r){
             int mid = l + (r-l)/2;
-            if(mid+1 < nums.length && nums[mid] < nums[mid+1]){
+            if(nums[mid] < nums[mid+1]){
                 l = mid+1;
             }else{
                 r = mid;
