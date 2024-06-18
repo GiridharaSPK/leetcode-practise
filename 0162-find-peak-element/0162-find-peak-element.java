@@ -6,7 +6,7 @@ class Solution {
         // so look for most probable peak from mid at every iteration
         while(l < r){
             int mid = l + (r-l)/2;
-            if(isPeak(nums, mid)) return mid;
+            // if(isPeak(nums, mid)) return mid;
             if(mid+1 < nums.length && nums[mid] < nums[mid+1]){
                 l = mid+1;
             }else{
