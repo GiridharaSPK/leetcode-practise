@@ -56,25 +56,29 @@ class Solution {
         
         return c;
         // sliding window to count
+        // more complicated logic (takes time) 
+        // (2 loops + breaking into chunks of k + traversing after a chunk + edge cases)
+        // counting only for valid chunks
+        // giving TLE probably because of O(n * k) 
+        // avoid sliding window if iteration pass is possible
+        // avoid dual loops (to handle less edge cases) if can be done with a single loop
         /*int l = 0;
         int r = 0;
         int count = 0;
-        while(r <= bloomDay.length){
-            while(l < bloomDay.length && bloomDay[l] > day){
-                l++;
-            }
-            if(l >= bloomDay.length) 
-                return 0;
-            r = l+1;
-            while(bloomDay[r] <= day){
-                r++;
-                if(l-r+1 == k){
-                    l = r;
-                    count++;
-                    break;
-                    // r = l;
+        while(l < bloomDay.length){
+            if(bloomDay[l] <= day){
+                r = l;
+                while(r < bloomDay.length && bloomDay[r] <= day){
+                    if(r-l+1 == k){
+                        l = r; // end of the current window (increments outside the 1st if)
+                        count++;
+                        break;
+                    }
+                    r++;
                 }
+                r = l+1;
             }
+            l++;
         }
         return count;*/
     }
