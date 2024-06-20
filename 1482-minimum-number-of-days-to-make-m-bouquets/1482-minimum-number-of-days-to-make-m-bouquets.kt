@@ -27,7 +27,7 @@ class Solution {
     
     private fun countPossibleBouqets(bloomDay: IntArray, k: Int, day: Int) : Int{ 
         var c = 0 // num of bouqets
-        var f = 0 // num of blossomed flowers
+        /*var f = 0 // num of blossomed flowers
         for(i in bloomDay){
             if(i <= day){
                 f++
@@ -36,7 +36,19 @@ class Solution {
                 f = 0
             }
         }
-        c += f/k
+        c += f/k*/
+        var curr = 0
+        for(i in bloomDay){
+            if (i <= day) {
+                curr++;
+                if (curr >= k) {
+                    curr = 0;
+                    c++;
+                }
+            } else {
+                curr = 0;
+            }
+        }
         
         return c
     }
