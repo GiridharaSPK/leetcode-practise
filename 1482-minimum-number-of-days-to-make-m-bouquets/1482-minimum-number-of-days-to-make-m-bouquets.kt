@@ -37,6 +37,8 @@ class Solution {
             }
         }
         c += f/k*/
+        
+        // just a different approach to avoid extra division operation
         var curr = 0
         for(i in bloomDay){
             if (i <= day) {
