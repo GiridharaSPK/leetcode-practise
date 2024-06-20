@@ -42,7 +42,22 @@ class Solution {
     // returns number of bouquets can be made on current day
     private int count(int[] bloomDay, int k, int day){
         // single iteration to count
-        int f = 0; // counts num of bloomed flowers
+        int c = 0;
+        int curr = 0;
+        for(int i = 0; i < bloomDay.length; i++){
+            if (bloomDay[i] <= day) {
+                curr++;
+                if (curr >= k) {
+                    curr = 0;
+                    c++;
+                }
+            } else {
+                curr = 0;
+            }
+        }
+        return c;
+        
+        /*int f = 0; // counts num of bloomed flowers
         int c = 0; // counts num of bouqets
         for(int i = 0; i < bloomDay.length; i++){
             if(bloomDay[i] <= day){
@@ -54,7 +69,7 @@ class Solution {
         } 
         c += f/k;
         
-        return c;
+        return c;*/
         // sliding window to count
         // more complicated logic (takes time) 
         // (2 loops + breaking into chunks of k + traversing after a chunk + edge cases)
