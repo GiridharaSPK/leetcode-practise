@@ -11,7 +11,8 @@ class Solution {
             }
             
             // there is 0 in the hypothetical array - flip k elements
-            if((nums[i] + q.size()) % 2 == 0){
+            if((nums[i] + q.size()) % 2 == 0){//anotherway if((totalFlips & 1) == nums[i]){
+                // have to flip, but there are less than k elements // can't flip
                 if(i + k > nums.length){
                     return -1;
                 }
