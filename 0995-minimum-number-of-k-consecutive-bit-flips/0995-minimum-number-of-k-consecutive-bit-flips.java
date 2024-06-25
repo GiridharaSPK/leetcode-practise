@@ -1,7 +1,26 @@
 class Solution {
     public int minKBitFlips(int[] nums, int k) {
-        // approach by neetcode
+        // optmized approach (of prev sol) by neetcode 
+        int curr_wind_count = 0;
         int count = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(i >= k && nums[i-k] == 2){
+                curr_wind_count--;
+            }
+
+            if((nums[i] + curr_wind_count)%2 == 0){
+                if(i+k > nums.length){
+                    return -1;
+                }
+                nums[i] = 2;
+                count++;
+                curr_wind_count++;
+            }
+        }
+        
+        return count;
+        // approach by neetcode
+        /*int count = 0;
         Deque<Integer> q = new LinkedList<Integer>(); // stores indexes of flipped
         int i = 0;
         while(i < nums.length){
@@ -21,7 +40,7 @@ class Solution {
             }
             i++;
         }
-        return count;
+        return count;*/
         
         
         // apporach without actually flipping
