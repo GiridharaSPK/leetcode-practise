@@ -1,1 +1,3 @@
-​
+- as flipping every time results into Big O n square
+- we just keep a count of possible flip of count
+- every two flips the value becomes same so divide and check with count%2
