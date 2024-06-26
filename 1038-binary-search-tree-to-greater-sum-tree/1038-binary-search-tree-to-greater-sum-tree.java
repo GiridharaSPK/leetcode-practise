@@ -16,9 +16,46 @@
 class Solution {
     int sum = 0;
     public TreeNode bstToGst(TreeNode root) {
-       // Iterative approach : O(n) time + O(n) space (stack)
+        // Morris Traversal Approach : O(n) time + constant space
+
+        // have to make new links to avoid using stack to trace back
+        // as we have to move from greater elements to smaller elements
+        // we have to update right pointers with parent element temporarily
+        // create a new link between left most child of current node and parent node
+        // all the temp ptrs have to be reversed/removed after finishing the current node sum
+        
+        TreeNode node = root;
+        int greaterSum = 0;
+        while(node!=null){
+            if(node.right!=null){
+                TreeNode r = node.right;
+                while(r.left!=null && r.left!= node){
+                    r = r.left;
+                }
+                // right
+                if(r.left == null){ // first time - create link
+                    r.left = node;
+                    node = node.right;
+                }else{ // remove old link
+                    r.left = null;
+                    // update current node
+                    greaterSum += node.val;
+                    node.val = greaterSum;
+                    // go left
+                    node = node.left;
+                }
+            }else{
+                greaterSum += node.val;
+                node.val = greaterSum;
+                node = node.left;
+            }
+        }
+        
+        return root;
+        
+        // Iterative approach : O(n) time + O(n) space (stack)
         // needs a class variable to maintain curr sum
-        Stack<TreeNode> stack = new Stack<TreeNode>();
+        /*Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode node = root;
         while(node!=null || !stack.isEmpty()){
             // push all right nodes to stack
@@ -35,7 +72,7 @@ class Solution {
             // go left
             node = temp.left;
         }
-        return root;
+        return root;*/
         
         // recursive apporach : O(n) time + O(n) space (recursive stack)
         // needs a class variable for sum
