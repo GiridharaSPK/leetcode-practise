@@ -23,7 +23,8 @@ class Solution {
         // we have to update right pointers with parent element temporarily
         // create a new link between left most child of current node and parent node
         // all the temp ptrs have to be reversed/removed after finishing the current node sum
-        
+        // [reverse of Morris traversal of inorder]
+
         TreeNode node = root;
         int greaterSum = 0;
         while(node!=null){
