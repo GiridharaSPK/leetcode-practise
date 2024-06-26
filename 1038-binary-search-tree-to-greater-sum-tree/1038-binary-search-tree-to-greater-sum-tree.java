@@ -18,7 +18,7 @@ class Solution {
     public TreeNode bstToGst(TreeNode root) {
        // Iterative approach : O(n) time + O(n) space (stack)
         // needs a class variable to maintain curr sum
-        /*Stack<TreeNode> stack = new Stack<TreeNode>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode node = root;
         while(node!=null || !stack.isEmpty()){
             // push all right nodes to stack
@@ -35,12 +35,12 @@ class Solution {
             // go left
             node = temp.left;
         }
-        return root;*/
+        return root;
         
         // recursive apporach : O(n) time + O(n) space (recursive stack)
         // needs a class variable for sum
-        helper(root);
-        return root;
+        /*helper(root);
+        return root;*/
     }
     
     private void helper(TreeNode root){
