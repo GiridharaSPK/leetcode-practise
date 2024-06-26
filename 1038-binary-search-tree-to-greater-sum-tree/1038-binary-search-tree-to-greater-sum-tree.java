@@ -80,13 +80,16 @@ class Solution {
         return root;*/
     }
     
+    // reverse of inoder traversal
     private void helper(TreeNode root){
         if(root == null)
             return;
-        
+        // right
         helper(root.right);
+        // current node: add sum and update current node
         sum += root.val;
         root.val = sum;
+        // go left
         helper(root.left);
     }
     
