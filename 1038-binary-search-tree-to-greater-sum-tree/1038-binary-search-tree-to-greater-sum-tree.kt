@@ -10,11 +10,28 @@
  */
 class Solution {
     fun bstToGst(root: TreeNode?): TreeNode? {
-        helper(root)
+        // iterative approach
+        val st = Stack<TreeNode>()
+        var sum = 0
+        var node = root
+        while(!st.isEmpty() || node!=null){
+            while(node!=null){
+                st.push(node)
+                node = node.right
+            }
+            node = st.pop()
+            sum += node.`val`
+            node.`val` = sum
+
+            node = node.left
+        }
         return root
+        // recursive apporach
+        /*helper(root)
+        return root*/
     }
     
-    var sum = 0
+    /*var sum = 0
     fun helper(root: TreeNode?){
         if(root == null){
             return
@@ -24,6 +41,6 @@ class Solution {
         sum += root!!.`val`
         root!!.`val` = sum
         helper(root!!.left)
-    }
+    }*/
     
 }
