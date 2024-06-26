@@ -12,10 +12,30 @@ class Solution {
     var sum = 0
 
     fun convertBST(root: TreeNode?): TreeNode? {
+        // iterative apporach with stack
+        val stack = Stack<TreeNode>()
+        var node = root
+        while(node!=null || !stack.isEmpty()){
+            // check right and add to stack
+            while(node!=null){
+                stack.push(node)
+                node = node.right
+            }
+            
+            // current (top of stack)
+            val temp = stack.pop()
+            sum += temp.`val`
+            temp.`val` = sum
+            
+            // go left from current top of stack
+            // (if current has left, go left, else pop from stack again)
+            node = temp.left
+        }
+        return root
         
         // recursive approach : O(n) space and O(n) time
-        helper(root)
-        return root
+        /*helper(root)
+        return root*/
     }
     
     private fun helper(root : TreeNode?){
