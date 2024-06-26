@@ -10,42 +10,15 @@
  */
 class Solution {
     fun balanceBST(root: TreeNode?): TreeNode? {
+        // approach 1:
+        // build a sorted list and build balanced bst from it recursively
+        // O(n) time - (O(n) inorder traversal + O(logn) bst from array)
+        // and O(n) space 
+        // (recursive stack inroder traversal O(n) 
+        // + recursive stack O(logn)+ arraylist O(n))
         val list = ArrayList<Int>()
         inorder(root, list)
         return buildBSTFromArray(list, 0, list.size-1)
-        
-        /*var node = root
-        var newRoot = root
-        while(node!=null){
-            if(height(node.left) > height(node.right) + 1){
-                var temp = node.left
-                while(temp!!.right!=null){
-                    temp = temp.right
-                }
-                temp.right = node
-
-                temp = node
-                if(newRoot == temp){
-                    newRoot = node
-                }
-                node = node.left
-                temp.left = null
-            }else if(height(node.right) > height(node.left) + 1){
-                var temp = node.right
-                while(temp!!.left!=null){
-                    temp = temp.left
-                }
-                temp.left = node
-
-                temp = node
-                if(newRoot == temp){
-                    newRoot = node
-                }
-                node = node.right
-                temp.left = null
-            }
-        }
-        return newRoot*/
     }
     
     private fun inorder(root: TreeNode?, list: ArrayList<Int>){
