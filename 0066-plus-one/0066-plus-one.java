@@ -26,7 +26,7 @@ class Solution {
         
         // more logical approach
         
-        /*for(int i = n-1; i >= 0; i--){
+        for(int i = n-1; i >= 0; i--){
             if(digits[i] == 9){
                 digits[i] = 0;
             }else{
@@ -37,10 +37,10 @@ class Solution {
         // only for all 9s case
         int[] ans = new int[n+1];
         ans[0] = 1;
-        return ans;*/
+        return ans;
         
-        // apporach using BigInteger
-        StringBuilder sb = new StringBuilder();
+        // approach using BigInteger
+        /*StringBuilder sb = new StringBuilder();
         for(int d : digits){
             sb.append(d);
         }
@@ -53,6 +53,6 @@ class Solution {
         for(int i = 0; i < chars.length; i++){
             ans[i] = chars[i] - '0';
         }
-        return ans;
+        return ans;*/
     }
 }
