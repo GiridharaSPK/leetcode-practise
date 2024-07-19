@@ -1,7 +1,8 @@
 class Solution {
     public int[] plusOne(int[] digits) {
         int n = digits.length;
-        int i = n-1;
+        
+        /*int i = n-1;
         int carry = 1;
         while(i>=0 && carry == 1){
             digits[i] = digits[i]+carry;
@@ -18,6 +19,19 @@ class Solution {
             return ans;
         }else{
             return digits;
+        }*/
+        
+        for(int i = n-1; i >= 0; i--){
+            if(digits[i] == 9){
+                digits[i] = 0;
+            }else{
+                digits[i]++;
+                return digits;
+            }
         }
+        // only for all 9s case
+        int[] ans = new int[n+1];
+        ans[0] = 1;
+        return ans;
     }
 }
