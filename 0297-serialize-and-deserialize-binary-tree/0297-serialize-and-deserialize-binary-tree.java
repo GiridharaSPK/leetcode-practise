@@ -9,6 +9,8 @@
  */
 public class Codec {
 
+    final String seperator = ",";
+    
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {        
         return serializeHelper(root, new StringBuilder()).toString();
@@ -16,9 +18,9 @@ public class Codec {
     
     private StringBuilder serializeHelper(TreeNode node, StringBuilder sb){
         if(node == null){ 
-            sb.append("null,");
+            sb.append("N").append(seperator);
         }else{ // preorder
-            sb.append(String.valueOf(node.val)).append(",");
+            sb.append(String.valueOf(node.val)).append(seperator);
             serializeHelper(node.left, sb);
             serializeHelper(node.right, sb);   
         }
@@ -26,8 +28,11 @@ public class Codec {
     }
 
     // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {        
-        Queue<String> q = new LinkedList(Arrays.asList(data.split(",")));
+    public TreeNode deserialize(String data) {     
+        // can use a list to traverse 
+        // - but a queue is more efficient
+        // --  as we remove first node everytime
+        Queue<String> q = new LinkedList(Arrays.asList(data.split(seperator)));
         // recursive fun to set left and right nodes from start;
         return deserializeHelper(q); 
     }
@@ -38,7 +43,7 @@ public class Codec {
         
         TreeNode root = null;
         String s = q.poll();
-        if(!s.equals("null")){
+        if(!s.equals("N")){
             root = new TreeNode(Integer.parseInt(s));
         }
         if(root != null){
