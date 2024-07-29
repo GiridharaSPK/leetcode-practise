@@ -83,12 +83,11 @@ class Solution {
                 return true;
             if (obj == null)
                 return false;
-            if (getClass() != obj.getClass())
+            if(!(obj instanceof Point)){
                 return false;
-            Point other = (Point) obj;
-            if (r != other.r || c != other.c)
-                return false;
-            return true;
+            }
+            Point p = (Point) obj;
+            return p.r == r && p.c == c;
         }
  
     }
