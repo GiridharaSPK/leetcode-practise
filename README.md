@@ -48,10 +48,12 @@ DFS in the first and last rows and columns all Os to Vs (temp). And then convert
   Approach 1 : DFS - loop from 1 to 9 (0 causes stackoverflow) call dfs(n, d, k, set) add and substract k, validate and update num until num of digits required becomes 0 then add to answers set (convert to array later)  
   Approach 2 : BFS - adding 1 to 9 in queue. (level order traversal - save size in each iteration) - loop until 'level == n' { poll from queue and add valid +k and -k numbers to queue }  
 (at each level, digit count of all numbers in the queue increase)  
-    [O(2^n) Time + O(2^n) Space]  
-    (a noob approach of keeping tracking of digit count is by comparing with > Math.pow(10, n-1) & < Math.pow(10,n))  
+Pitfall 1: * appending numbers can be 0 so use (lastDigit - k >= 0) instead of (lastDigit - k > 0)  
+Pitfall 2: ** avoid adding duplicates when k = 0 -> lastDigit - k will be equal to lastDigit + k
+[O(2^n) Time + O(2^n) Space]  
+(a noob approach of keeping tracking of digit count is by comparing with > Math.pow(10, n-1) & < Math.pow(10,n))  
     
-7)   
+6)   
 
 ## Tries:
 
