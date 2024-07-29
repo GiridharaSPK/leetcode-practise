@@ -9,13 +9,13 @@ class Solution {
         int cols = grid[0].length;
         
         int[][] dir = {{0,1},{1,0},{-1,0},{0,-1}};
-        HashSet<int[]> rotten = new HashSet<int[]>();
-        Queue<int[]> q = new LinkedList<int[]>();
+        HashSet<Point> rotten = new HashSet<Point>();
+        Queue<Point> q = new LinkedList<Point>();
         int count = 0; // count of fresh oranges at the given minute
         int min = 0; // minutes
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < cols; j++){
-                int[] curr = {i, j};
+                Point curr = new Point(i, j);
                 if(grid[i][j] == 2){
                     rotten.add(curr);
                     q.offer(curr); // {0,0}
@@ -34,21 +34,17 @@ class Solution {
             // there are fresh oranges but no rotten oranges
             return -1;
         }
-        
-        
-        
+
         while(!q.isEmpty()){
             int size = q.size();  // 1 -> 2
             while(size > 0){ // 2
-                int[] curr = q.poll();
+                Point curr = q.poll();
                 size--; 
                 for(int[] d : dir){
-                    int nr = curr[0] + d[0];
-                    int nc = curr[1] + d[1];
-                    int[] next = {nr, nc};
-                    if(isValid(nr, nc, rows, cols) 
-                        && !rottenContains(rotten, next) 
-                        && grid[nr][nc] == 1){
+                    int nr = curr.r + d[0];
+                    int nc = curr.c + d[1];
+                    Point next = new Point(nr, nc);
+                    if(isValid(nr, nc, rows, cols) && !rotten.contains(next) && grid[nr][nc]==1){
                         count--;
                         q.offer(next);
                         rotten.add(next);
@@ -66,15 +62,35 @@ class Solution {
         return min;
     }
     
-    private boolean rottenContains(HashSet<int[]> set, int[] pt){
-        for(int[] curr : set){
-            if(curr[0] == pt[0] && curr[1] == pt[1]) return true;
-        }
-        return false;
-    }
-    
     private boolean isValid(int r, int c, int rows, int cols){
         return (r >= 0 && c >= 0 && r < rows && c < cols);
+    }
+    
+    class Point{
+        int r;
+        int c;
+        Point(int x, int y){
+            this.r = x;
+            this.c = y;
+        }
+        
+        public int hashCode() {
+            return 31 * r + 37 * c;
+        }
+        
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+            if (getClass() != obj.getClass())
+                return false;
+            Point other = (Point) obj;
+            if (r != other.r || c != other.c)
+                return false;
+            return true;
+        }
+ 
     }
     
 }
