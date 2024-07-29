@@ -53,8 +53,31 @@ Pitfall 2: ** avoid adding duplicates when k = 0 -> lastDigit - k will be equal 
 [O(2^n) Time + O(2^n) Space]  
 (a noob approach of keeping tracking of digit count is by comparing with > Math.pow(10, n-1) & < Math.pow(10,n))  
     
-6)   
+6) [LC  - Rotten Oranges](https://github.com/GiridharaSPK/leetcode-practise/blob/main/0994-rotting-oranges/0994-rotting-oranges.java)
+   Edge cases to not miss:  
+   (i) all cannot rotten -> return -1  
+   (ii) no rotten -> return -1  
+   (iii) no fresh -> return 0  
 
+   Approach 1 : intial all rotten oranges to queue and maintain original fresh count + BFS + use a visited set to mark rotten oranges at each iteration  
+   Approach 2 : intial all rotten oranges to queue and maintain original fresh count + BFS + updated grid - update cell to 2 when adding a position to queue  
+
+   after initial processing - storing intial rotten oranges and count of fresh oranges - handle edge cases  
+   ```
+   // no rotten oranges  
+     if(q.isEmpty()){  
+         // no fresh oranges - already at solution  
+         if(count == 0){  
+             return 0;  
+         }  
+         // there are fresh oranges but no rotten oranges  
+         return -1;  
+     }  
+   ```
+ Optimizations: in bfs loop add check for current fresh count > 0 check to avoid the above code  
+ Note 1: check if fresh count is 0 in the end, if not return -1 (all the fresh oranges cant be reached)  
+ Note 2: update minutes(+1) count after each bfs iteration i.e. when size becomes 0 and queue isNotEmpty(size reduces in inner loop inside bfs) - need not have a seperate if condition - writing it after while loop should be sufficient  
+     
 ## Tries:
 
 ## Bit Manipulation: 
