@@ -2,30 +2,30 @@ class Solution {
     public int[] numsSameConsecDiff(int n, int k) {
         HashSet<Integer> set = new HashSet<Integer>();
         // BFS
-        // Queue<Integer> q = new LinkedList<Integer>();
-        // for(int i = 1; i < 10; i++){
-        //     q.offer(i);
-        // }
-        // bfs(n, k, q);
-        // int[] ans = new int[q.size()];
-        // int i = 0;
-        // while(!q.isEmpty()){
-        //     ans[i] = q.poll();
-        //     i++;
-        // }
-        // return ans;
-        
-        // DFS
+        Queue<Integer> q = new LinkedList<Integer>();
         for(int i = 1; i < 10; i++){
-            dfs(n-1, k, i, set);
+            q.offer(i);
         }
-        int[] ans = new int[set.size()];
+        bfs(n, k, q);
+        int[] ans = new int[q.size()];
         int i = 0;
-        for(int num: set){
-            ans[i] = num;
+        while(!q.isEmpty()){
+            ans[i] = q.poll();
             i++;
         }
         return ans;
+        
+        // DFS
+        // for(int i = 1; i < 10; i++){
+        //     dfs(n-1, k, i, set);
+        // }
+        // int[] ans = new int[set.size()];
+        // int i = 0;
+        // for(int num: set){
+        //     ans[i] = num;
+        //     i++;
+        // }
+        // return ans;
     }
     
     private void bfs(int n, int k, Queue<Integer> q){
@@ -39,7 +39,7 @@ class Solution {
                 if(last + k < 10){
                     q.offer(num*10 + last+k);
                 }
-                if(last - k >= 0){
+                if(k!=0 && last - k >= 0){
                     q.offer(num*10 + last-k);
                 }
             }else{
