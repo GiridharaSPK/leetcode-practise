@@ -69,9 +69,9 @@ class Solution {
     class Point{
         int r;
         int c;
-        Point(int x, int y){
-            this.r = x;
-            this.c = y;
+        Point(int r, int c){
+            this.r = r;
+            this.c = c;
         }
         
         public int hashCode() {
