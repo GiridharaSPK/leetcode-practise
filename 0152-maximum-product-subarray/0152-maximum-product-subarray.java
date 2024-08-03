@@ -35,27 +35,27 @@ class Solution {
         // currMax and currMin 
         // currMin could exceed currMax if multiplied again with another num
         
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        int i = 0;
-        int currMax = 1;
-        int currMin = 1;
-        while(i < n){
+        double min = Long.MAX_VALUE;
+        double max = Long.MIN_VALUE;
+        double currMax = 1;
+        double currMin = 1;
+        for(int i = 0; i < n; i++){
             // storing them so that we compare values before updating each of them
-            int temp1 = currMax*nums[i]; 
-            int temp2 = currMin*nums[i];
+            double temp1 = currMax*nums[i]; 
+            double temp2 = currMin*nums[i];
             currMax = Math.max(Math.max(temp1, temp2), nums[i]); 
             // if temp is not used currMax gets updated for next step
             currMin = Math.min(Math.min(temp1, temp2), nums[i]);
             max = Math.max(max, currMax);
             min = Math.min(min, currMin);
-            if(currMax == 0)
-                currMax = 1;
-            if(currMin == 0)
-                currMin = 1;
-            i++;
+            // not required when we are storing max 
+            // updated by comparing with current max seperately
+            // if(currMax == 0)
+            //     currMax = 1;
+            // if(currMin == 0)
+            //     currMin = 1;
         }
         
-        return max;
+        return (int) max;
     }
 }
