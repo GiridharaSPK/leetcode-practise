@@ -35,12 +35,12 @@ class Solution {
         // currMax and currMin 
         // currMin could exceed currMax if multiplied again with another num
         
-        double min = Long.MAX_VALUE;
+        /*double min = Long.MAX_VALUE;
         double max = Long.MIN_VALUE;
         double currMax = 1;
         double currMin = 1;
         for(int i = 0; i < n; i++){
-            // storing them so that we compare values before updating each of them
+            // *** storing them so that we compare values before updating each of them
             double temp1 = currMax*nums[i]; 
             double temp2 = currMin*nums[i];
             currMax = Math.max(Math.max(temp1, temp2), nums[i]); 
@@ -48,6 +48,7 @@ class Solution {
             currMin = Math.min(Math.min(temp1, temp2), nums[i]);
             max = Math.max(max, currMax);
             min = Math.min(min, currMin);
+            
             // not required when we are storing max 
             // updated by comparing with current max seperately
             // if(currMax == 0)
@@ -56,6 +57,56 @@ class Solution {
             //     currMin = 1;
         }
         
-        return (int) max;
+        return (int) max;*/
+        
+        // approach 3
+        // traverse from both directions
+        /*
+        double leftProduct = 1;
+        double rightProduct = 1;
+        double max = nums[0];
+        for(int i = 0; i < n; i++){            
+            leftProduct *= nums[i];
+            max = Math.max(max, leftProduct);
+            rightProduct *= nums[n-i-1];
+            max = Math.max(max, rightProduct);
+            
+            if(leftProduct == 0){
+                leftProduct = 1;
+            }
+            if(rightProduct == 0){
+                rightProduct = 1;
+            }
+        }
+        return (int) max;*/
+        
+        // approach 4 - my approach during mock interview
+        // over complicated version of approach 2
+          boolean hasZero = false;
+          double ans = Integer.MIN_VALUE;
+          double max = 1; // current window max
+          double min = 1;
+          int p = 0;
+          while(p < nums.length){
+            if(nums[p] != 0){
+              double temp = max;
+              max = Math.max(nums[p], Math.max(nums[p]*max, nums[p]*min)); // 24*4
+              min = Math.min(nums[p], Math.min(nums[p]*temp, nums[p]*min)); //
+              ans = Math.max(ans, max);
+            }else{
+              // reset
+              hasZero = true;
+              max = 1;
+              min = 1;
+            }
+
+            p++;
+        }
+      if(ans <= 0 && hasZero){
+        return 0;
+      }
+      return (int)ans;
+    
+        
     }
 }
