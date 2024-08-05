@@ -82,16 +82,16 @@ class Solution {
         
         // approach 4 - my approach during mock interview
         // over complicated version of approach 2
-          boolean hasZero = false;
-          double ans = Integer.MIN_VALUE;
-          double max = 1; // current window max
-          double min = 1;
-          int p = 0;
-          while(p < nums.length){
+        boolean hasZero = false;
+        double ans = Integer.MIN_VALUE;
+        double max = 1; // current window max
+        double min = 1;
+        int p = 0;
+        while(p < nums.length){
             if(nums[p] != 0){
-              double temp = max;
-              max = Math.max(nums[p], Math.max(nums[p]*max, nums[p]*min)); // 24*4
-              min = Math.min(nums[p], Math.min(nums[p]*temp, nums[p]*min)); //
+              double temp = max; // storing the max value to use in min calculation before updating max
+              max = Math.max(nums[p], Math.max(nums[p]*max, nums[p]*min)); 
+              min = Math.min(nums[p], Math.min(nums[p]*temp, nums[p]*min)); 
               ans = Math.max(ans, max);
             }else{
               // reset
@@ -99,14 +99,12 @@ class Solution {
               max = 1;
               min = 1;
             }
-
             p++;
         }
-      if(ans <= 0 && hasZero){
-        return 0;
-      }
-      return (int)ans;
-    
+        if(ans <= 0 && hasZero){
+            return 0;
+        }
+        return (int)ans;
         
     }
 }
