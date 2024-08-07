@@ -32,7 +32,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
    Approach 2 : BFS (visited array, directions array, Queue)[O(m * n) Time + O(m * n) Space]  
    If we can modify the matrix, instead of maintaining visited array, we can update value of matrix to save some space, but this still doesnt change the space complexity because the max length of an island can be m*n  
 
-2) [LC 133 - Max Area of Island](https://github.com/GiridharaSPK/leetcode-practise/tree/main/0133-clone-graph) [MEDIUM]  
+2) [LC 133 - Clone Graph](https://github.com/GiridharaSPK/leetcode-practise/tree/main/0133-clone-graph) [MEDIUM]  
    Approach 1 : DFS  
    Approach 2 : BFS  
    Clone each node (entirely) and put into a hashmap. Traverse and parallely link its connected nodes (* only add unvisited connected nodes to queue, but connect all neighbors)  
