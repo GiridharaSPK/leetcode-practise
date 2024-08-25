@@ -9,7 +9,7 @@ class Solution {
                         {0,9,0,0}, {0,1,0,0}, 
                         {0,0,9,0}, {0,0,1,0},
                         {0,0,0,9}, {0,0,0,1}};
-        int depth = 0;
+        int step = 0;
         
         // edge case
         if(set.contains("0000") || set.contains(target)) return -1;
@@ -34,7 +34,7 @@ class Solution {
                 String tempStr = sb.toString();
                 
                 if(tempStr.equals(target)){
-                    return depth;
+                    return step;
                 }
                 
                 if(set.contains(tempStr)){
@@ -51,7 +51,7 @@ class Solution {
                 }
             }
 
-            depth++;
+            step++;
         }
         return -1;
     }
