@@ -11,6 +11,11 @@ class Solution {
                         {0,0,0,9}, {0,0,0,1}};
         int depth = 0;
         
+        // edge case
+        if(set.contains("0000") || set.contains(target)) return -1;
+
+        
+        // BFS
         Queue<int[]> q = new LinkedList<int[]>();
         q.add(src);
         
@@ -38,7 +43,11 @@ class Solution {
                 set.add(tempStr);
                 
                 for(int[] d: dir){
-                    q.add(new int[]{(temp[0]+d[0])%10, (temp[1]+d[1])%10, (temp[2]+d[2])%10, (temp[3]+d[3])%10});
+                    q.add(new int[]{
+                        (temp[0]+d[0])%10, 
+                        (temp[1]+d[1])%10, 
+                        (temp[2]+d[2])%10, 
+                        (temp[3]+d[3])%10});
                 }
             }
 
