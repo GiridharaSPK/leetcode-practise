@@ -14,8 +14,14 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Sliding Window:  
 
 ## Recursion:  
+1) [LC 70 - Climbing Stairs](https://github.com/GiridharaSPK/leetcode-practise/tree/main/0070-climbing-stairs)
+   handle base cases for n < 0 and n < 2, return sum of possibilities of n-1 and n-2   
+
 
 ## Dynamic Programming:   
+1) [LC 70 - Climbing Stairs](https://github.com/GiridharaSPK/leetcode-practise/tree/main/0070-climbing-stairs)
+  recursive to DP : dp[i-1] + dp[i-2], handle base cases dp[0]=1 and dp[1] = 1. dp array size is n+1 to return dp[n]
+
 
 ## Linked List:  
 
@@ -26,6 +32,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Trees:  
 
 ## Graphs:   
+
 ### Traversal  
 1) [LC 200 - Number of Islands](https://github.com/GiridharaSPK/leetcode-practise/tree/main/0200-number-of-islands) [MEDIUM]  
    Approach 1 : DFS (visited array, directions array) [O(m * n) Time + O(m * n) Space (recursive stack)]  
