@@ -83,7 +83,11 @@ Pitfall 2: ** avoid adding duplicates when k = 0 -> lastDigit - k will be equal 
 ## Bit Manipulation: 
 
 ## Math: 
+[LC 31 - Next Permutation](https://github.com/GiridharaSPK/leetcode-practise/tree/main/0031-next-permutation)  
+Math or logical question. 
+1) look for pivot from the end. 2) and swap with next greater element than pivot from the end. 3) then reverse the pivot+1 to end subarray
 
+- could also be done with recursion
 
 ## Miscellanious: 
 
